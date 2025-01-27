@@ -1,8 +1,10 @@
 git clone (url) - "usado para clonar o repositorio do GitHub para a máquina"
 
-git config --global user.name "Carlos" - Entra com o nome do git
-git config --global user.email querodromi@gmail.com - Entra com email
+git config --global user.name "Carlos" - "Entra com o nome do git"
+git config --global user.email querodromi@gmail.com - "Entra com email"
 
 git add .
 
 git commit -m "Aula 22-01"
+
+npm install nodemon - "é uma ferramenta que permite reiniciar automaticamente o servidor Node. js sempre que alterações nos arquivos da aplicação são detectadas"

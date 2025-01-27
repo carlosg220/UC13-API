@@ -2,7 +2,7 @@ import carros2025 from "./tabelaCarros.js";
 
 import express from "express";
 
-import { modeloCarro } from "./validacao.js";
+import { modeloCarro, modeloAtualizacaoCarro } from "./validacao.js";
 
 const app = express();
  
@@ -39,6 +39,28 @@ app.post('/', (req, res) => {
     carros2025.push(novoCarro); // adiciona o carro a lista de carros.
     res.status(200).send(novoCarro); // Retorna o carro adiciona com status 200
 });
+
+app.put('/:sigla', (req,res) => {
+    const siglaInformada = req.params.sigla.toUpperCase();
+    const carroSelecionado = carros2025.find((c) => c.sigla === siglaInformada);
+    if(!carroSelecionado) {
+        // Se o carro não for encontrado retorna erro 404
+        res.status(404).send("não existe um carro com a sigla infomada");
+        return;
+    };
+    // Valida os dados da requisição com o modelo da atualização:
+    const {error} = modeloAtualizacaoCarro.validate(req.body);
+    if(error) {
+        // Se houver erro da validação retorna erro 400
+        res.status(400).send(error);
+        return;
+    }
+    const campos = Object.keys(req.body);
+    for (let campo of campos) {
+        carroSelecionado[campo] = req.body[campo];
+    }
+    res.status(200).send(carroSelecionado);
+})
 
 // define a porta do servidor
 app.listen(3000, () => {
