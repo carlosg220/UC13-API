@@ -37,7 +37,7 @@ Retorna a lista completa de carros disponíveis.
 [
     {
         "nome": "Ferrari",
-        "sigla": '"FER'",
+        "sigla": "FER'",
         "velocidadeMaxima": "340",
         "potencia": "800",
         "consumo": "5.5", 
