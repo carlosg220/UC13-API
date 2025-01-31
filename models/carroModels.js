@@ -50,7 +50,7 @@ export const updateCarro = (sigla, dadosAtualizados) => {
     const carroIndex = carros2025.findIndex(carro => carro.sigla === sigla);
     if (carroIndex === -1) return null; // Se não encontrar carro retorna null
     // Atualiza o carro com as informações fornecidas
-    carros2025[carroIndex] = { ...carros2025[carroIndex], ...dadosAtualizados };
+    carros2025[carroIndex] = { ...carros2025[carroIndex], ...dadosAtualizados }; // O spread ( ... ) é comumente usada para fazer cópias superficiais de objetos JavaScript 
     return carros2025[carroIndex];
 };
 
